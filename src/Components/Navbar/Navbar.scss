@@ -37,7 +37,7 @@
   .nav-item {
     display: flex;
     align-items: center;
-    height: 80px;
+    // height: 80px;
     position: relative;
   }
   
@@ -92,7 +92,7 @@
       top: 53px;
       left: -100%;
       opacity: 1;
-      transition: all 0.5s ease;
+      // transition: all 0.5s ease;
     }
   
     .nav-menu.active {
@@ -107,7 +107,7 @@
       text-align: center;
       padding: 1rem;
       width: 100%;
-      display: table;
+      // display: table;
     }
   
     .nav-links:hover {
@@ -173,29 +173,23 @@
 
 
 .dropdown-menu {
-    background: red;
-    width: 200px;
-    position: absolute;
-    top: 68px;
-    list-style: none;
-    text-align: start;
-
-    transition: all 0.3s ease;   
-    opacity: 1!important;
-    visibility: visible;
-    animation: skew 0.5s cubic-bezier(0, 0, 0, 1.82);
+  background: red;
+  width: 200px;
+  position: absolute;
+  top: 47px;
+  list-style: none;
+  text-align: start;
+  max-height: 300px;
+  opacity: 1;
+  z-index: 99;
 }
 
 
-@keyframes slew {
-  0% {
-    transform: translateY(68px);
-}
+  
 
-100% {
-    transform: skewX(12px);
-}
-}
+
+
+
 
     
   
@@ -212,8 +206,17 @@
   
   .dropdown-menu.clicked {
 
+    // opacity: 0;
+    // // visibility: hidden;
+    // display: none;
+
+
+    transition: all 0.6s;
+
+    max-height: 0;
+    display: block;
+    overflow: hidden;
     opacity: 0;
-    visibility: hidden;
     
   }
   
@@ -240,8 +243,8 @@
     .dropdown-menu {
       background: red;
       width: 100%;
-      position: unset;
-      /* top: 80px; */
+      position: static;
+      top: 0px; 
       list-style: none;
       text-align: start;
       display: block;
@@ -251,8 +254,8 @@
   .nav-item {
     display: flex;
     align-items: center;
-    height: unset;
-    position: relative;
+    height:auto!important;
+    position: static;
     flex-direction: column;
 }
   }

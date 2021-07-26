@@ -11,37 +11,37 @@ const SubMenu = ({ item , handleClick }) => {
 
   
 
-//   const onMouseEnter = () => {
-//     if (window.innerWidth < 960) {
-//         setSubnav(false);
-//     } else {
-//         setSubnav(true);
-//     }
-//   };
+  const onMouseEnter = () => {
+    if (window.innerWidth < 960) {
+        setSubnav(false);
+    } else {
+        setSubnav(true);
+    }
+  };
 
-//   const onMouseLeave = () => {
-//     if (window.innerWidth < 960) {
-//         setSubnav(false);
-//     } else {
-//         setSubnav(false);
-//     }
-//   };
+  const onMouseLeave = () => {
+    if (window.innerWidth < 960) {
+        setSubnav(false);
+    } else {
+        setSubnav(false);
+    }
+  };
 
 
 
 let Nav = null;
 
 
-if(item.subNav && subnav) {
+if(subnav && item.subNav) {
     Nav= <NavLink   to={item.path}  className="nav-links" onClick={item.subNav && showSubnav} >
     {item.title}  <span className="arrow">{ item.iconOpened} </span></NavLink> 
 }
-else if(item.subNav ) {
+ if(item.subNav ) {
     Nav= <NavLink   to={item.path}  className="nav-links" onClick={item.subNav && showSubnav} >
     {item.title}  <span className="arrow">{ item.iconClosed} </span></NavLink> 
-}else {
-    Nav= <NavLink   to={item.path}  className="nav-links"   onClick={item.subNav && showSubnav}>
-    {item.title} </NavLink> 
+}
+if (!item.subNav) {
+    Nav= <NavLink   to={item.path}  className="nav-links " > {item.title} </NavLink> 
 }
   return (
 
@@ -50,7 +50,7 @@ else if(item.subNav ) {
     <>
 
 <li  className="nav-item" 
-//  onMouseEnter={onMouseEnter}  onMouseLeave={onMouseLeave}
+ onMouseEnter={onMouseEnter}  onMouseLeave={onMouseLeave}
  >
             
 
@@ -58,8 +58,8 @@ else if(item.subNav ) {
 
 
 
-<ul   className={subnav ? 'dropdown-menu':'dropdown-menu clicked'} onClick={ showSubnav}>         
-{subnav ? item.subNav.map((item, index) => {
+<ul   className=  {subnav ? 'dropdown-menu':'dropdown-menu clicked'} onClick={ showSubnav}>         
+{item.subNav && item.subNav.map((item, index) => {
           return (
             <li key={index} 
             onClick={handleClick}
@@ -71,7 +71,7 @@ else if(item.subNav ) {
               </NavLink>
             </li>
           );
-        }):null}
+        })}
       </ul> 
     </li>
  </>
